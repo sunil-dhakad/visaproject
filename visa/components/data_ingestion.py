@@ -8,6 +8,7 @@ from visa.entity.artifact_entity import DataIngestionArtifact
 from visa.exception import CustomException 
 from datetime import date 
 from sklearn.model_selection import train_test_split
+from six.moves import urllib
 
 #download data form clowd or database or github
 # split the data into train and test -->ingested data we will get
@@ -32,8 +33,8 @@ class DataIngestion:
 
             raw_file_path = os.path.join(raw_data_dir,us_visa_file_name)
 
-
-
+            urllib.request.urlretrieve(download_url,raw_file_path)
+            logging.info(f"success in lownloading file: [{raw_data_dir}]")
 
         except Exception as e:
             raise CustomException(e,sys) from e
@@ -88,7 +89,7 @@ class DataIngestion:
         try:
             raw_data_file = self.download_data()
             return self.split_data_as_train_test()
-        except Exceptionas as e:
+        except Exception as e:
             raise CustomException(e.sys) from e
 
 

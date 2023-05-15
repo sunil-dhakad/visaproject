@@ -2,14 +2,14 @@
 
 training_pipeline_config:
   pipeline_name: visa
-  artifact: artifact
+  artifact_dir: artifact
   
 
 
 
 
 data_ingestion_config:
-  dataset_download_url: https://github.com/Shivan118/US-Visa-/blob/main/Visadataset%5B1%5D.csv
+  dataset_download_url: https://raw.githubusercontent.com/Shivan118/Main-Branching/main/Visadataset.csv
   raw_data_dir: raw_data
   ingested_dir: ingested_data
   ingested_train_dir: train

@@ -1,4 +1,5 @@
-import os,sys
+import os
+import sys
 import pandas
 import numpy as np 
 from visa.constant import *
@@ -16,15 +17,15 @@ class Pipeline():
     def __init__(self,config: Configuration = Configuration())->None:  
         try:
             self.config = config 
-        except Exceptionas as e:
-            raise CustomException(e,sys) from e 
+        except Exception as e:
+            raise CustomException(e,sys) from e
 
 
     def start_data_ingestion(self)-> DataIngestionArtifact:
         try:
-            data_ingestion = DataIngestion(data_ingestion_config= self.config.get_data_ingestion_config)
-            return data_ingestion.initiate_data_ingestion()
-        except Exceptionas as e:
+            data_ingestion = DataIngestion(data_ingestion_config= self.config.get_data_ingestion_config())
+            return data_ingestion.initiat_data_ingestion()
+        except Exception as e:
             raise CustomException(e,sys) from e 
 
 
@@ -32,8 +33,8 @@ class Pipeline():
         try:
             # data ingestion
             data_ingestion_artifact =  self.start_data_ingestion()
-        except Exceptionas as e:
-            raise CustomException(e,sys) from e 
+        except Exception as e:
+            raise CustomException(e,sys) from e
 
 
 
